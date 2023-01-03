@@ -1,0 +1,34 @@
+{% extends './base.html' %} 
+
+{% block title %}Seat Booker | Confirm{% endblock %}
+
+{% block content %} 
+    <header>
+        <h1>Seat Booker</h1>
+        <a href='./../' class='admin-login btn'>Home</a>
+    </header>
+
+    <h1>Register for {{ seat }} 
+        <br><small style='font-weight: normal;'>Capacity: {{ seat.capacity }}</small>
+    </h1>
+    <h3><a href='{% url "seatbooker:index" %}'>Back to selection</a></h3>
+    {% if messages %}
+        <h3 style='color: red;'>{{ messages }}</h3>
+    {% endif %}
+    
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="field">
+                <h2>{{ field.label_tag }} {{ field }} </h2>
+            </div>
+        {% endfor %}
+        <button class="form-btn" type="submit">Submit</button>
+    </form>
+    <div class='diagram-container'>
+        {% load static %}
+        <img src="{% static 'media/sanctuary.jpg' %}">
+    </div>
+    
+
+{% endblock %}

@@ -1,0 +1,263 @@
+html {
+    font-family: 'Avenir', 'Helvetica', sans-serif;
+    font-size: 16px;
+}
+
+h1 {
+    font-family: 'Futura', 'Avenir', 'Helvetica', sans-serif;
+    font-size: 2rem;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+small {
+    font-weight: normal;
+}
+
+a {
+    color: #1520A6;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+/* HEADER */
+header {
+    background-color: #1520A6;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: solid 1px white;
+}
+
+header h1 {
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+.admin-login {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.admin-console {
+    position: absolute;
+    right: 5rem;
+    top: 0;
+}
+
+.navbar {
+    color: white;
+    text-align: center;
+    margin: 1rem auto;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar li {
+    padding: 1rem 0;
+    justify-self: center;
+    display: block;
+}
+
+.navbar li input {
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    width: 11.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    border: solid white 1px;
+    border-radius: 5%;
+}
+
+.navbar li input:hover, input.clicked {  
+    font-weight: bold;
+    background-color: white !important;
+    color: rgb(11, 174, 238) !important;
+}
+
+/* FRONT */
+.container {
+    display: flex;
+}
+
+aside {
+    float: left;
+    width: 25%;
+    max-width: 17rem;
+    background-color: rgb(79, 192, 236);
+    padding: 1rem;
+}
+
+main {
+    padding: 3rem;
+    flex-direction: row;
+    justify-items: center;
+    margin: 0 auto;
+}
+
+.date-wrapper {
+    font-size: 1.4rem;
+    display: inline;
+}
+
+.date-wrapper h2 {
+    font-size: 1.6rem;
+    display: inline;
+    color: #1520A6;
+    font-weight: bold;
+}
+
+.podium {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 27%;
+    height: 4.5rem;
+    background-color: white;
+    border: solid 1px black;
+    color: black;
+    margin: 3rem auto 1rem auto;
+    padding: 0 5% 0 5%;
+}
+
+.podium h4 {
+    font-size: 1.2rem;
+}
+
+.seats {
+    display: grid;
+    width: 75%;
+    grid-template-columns: 27% 27% 27% 27%;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.seats a {
+    color: black;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 6rem;
+    margin: 1rem;
+    padding: 1rem;
+    background-color:rgb(79, 192, 236);
+    color: rgb(175, 230, 252);
+}
+
+.label h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.booked-seat {
+    color: white;
+    font-weight: bold;
+    display: block;
+}
+
+.label.unbooked {
+    background-color: #1520A6; 
+    color: white;
+}
+
+.unbooked:hover, .clicked {
+    background-color: rgb(79, 192, 236);
+    color: white;
+}
+
+/* FORM */
+form input {
+    width: 20rem;
+    height: 1.5rem;
+    font-family: 'Avenir', 'Helvetica', sans-serif;
+}
+
+.btn {
+    font-family: 'Avenir', 'Helvetica', sans-serif;
+    font-size: 1rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    color: white;
+    border: solid white 1px;
+    border-radius: 5%;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #1520A6;
+}
+
+.form-btn {
+    font-family: 'Avenir', 'Helvetica', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 1rem;
+    padding: 0.5rem;
+    color: #1520A6;
+    background-color: white;
+    border: solid #1520A6 1px;
+    border-radius: 5%;
+}
+
+.form-btn:hover {
+    color: white;
+    background-color: #1520A6;
+}
+
+.diagram-container {
+    margin: 1rem auto;
+}
+
+.diagram-container img {
+    margin: 0 auto;
+    width: 50%;
+}
+
+img {
+    border: solid #1520A6 2px;
+}
+
+
+/* SEARCH */
+.match-list {
+    list-style-type: none;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 480px) {
+    .seats {
+        width: 95%;
+    }
+
+    .diagram-container img {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 1025px) and (min-width: 481px) {
+    .seats {
+        width: 90%;
+    }
+
+    .diagram-container img {
+        width: 75%;
+    }
+}

@@ -1,0 +1,137 @@
+{% extends './base.html' %}
+
+{% block title %}Seat Booker{% endblock %}
+
+{% block content %} 
+    <header>
+        {% if user.is_authenticated %}
+            <h1>Seat Booker – ADMIN VIEW</h1>
+            <a href='./admin' class='admin-console btn'>Admin Console</a>
+            <a href='./admin/logout/?next=/' class='admin-login btn'>Logout</a>
+        {% else %}
+            <h1>Seat Booker</h1>
+            <a href='./admin/login/?next=/' class='admin-login btn'>Admin Login</a>
+        {% endif %}
+    </header>
+    <div class="container">
+        <aside>
+            <form class='select' action='' method='post'>
+                {% csrf_token %}
+                <ul class="navbar">
+                    <li><input {% if clicked == 1 %}class='clicked'{% endif %} 
+                        type='submit' name='service1' value='{{ service1 }}'></li>
+                    <li><input {% if clicked == 2 %}class='clicked'{% endif %} 
+                        type='submit' name='service2' value='{{ service2 }}'></li>
+                    <li><input {% if clicked == 3 %}class='clicked'{% endif %} 
+                        type='submit' name='service3' value='{{ service3 }}'></li>
+                    <li><input {% if clicked == 4 %}class='clicked'{% endif %} 
+                        type='submit' name='service4' value='{{ service4 }}'></li>
+                    <li><input {% if clicked == 5 %}class='clicked'{% endif %} 
+                        type='submit' name='service5' value='{{ service5 }}'></li>
+                </ul>
+            </form>
+        </aside>
+        
+        <main>
+            <span class='date-wrapper'>Service on <h2>{{ curr.date }}</h2> in the WCEC Sanctuary.</span>
+            <h2>Current number of attendees: {{ curr.num_attendees }} / {{ curr.capacity }} people.</h2>
+    
+            <div class='podium'>
+                <h4>Podium</h4>
+            </div>
+            
+            {% if seatsA %}
+                <div class='seats'>
+                    <div class="a">
+                        {% for seat in seatsA %}
+                            <a {% if not seat.booked and curr.num_attendees < curr.capacity %}
+                                href='{% url "seatbooker:confirm" seat.id %}'{% endif %}>
+                                <div class='label 
+                                    {% if not seat.booked and curr.num_attendees < curr.capacity %} 
+                                        unbooked 
+                                    {% endif %}'>
+                                    <h4 class='seat-id'>{{ seat }} 
+                                        {% if seat.reserved_by %}
+                                        <small class='booked-seat'>
+                                            {{ seat.reserved_by }} ({{ seat.reservation_size }})
+                                        </small> 
+                                        {% else %}
+                                        <small>Capacity: {{ seat.capacity }}</small>
+                                        {% endif %}
+                                    </h4>
+                                    
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                    <div class="b">
+                        {% for seat in seatsB %}
+                            <a {% if not seat.booked and curr.num_attendees < curr.capacity %}
+                                href='{% url "seatbooker:confirm" seat.id %}'{% endif %}>
+                                <div class='label 
+                                    {% if not seat.booked and curr.num_attendees < curr.capacity %} 
+                                        unbooked 
+                                    {% endif %}'>
+                                    <h4 class='seat-id'>{{ seat }} 
+                                        {% if seat.reserved_by %}
+                                        <small class='booked-seat'>
+                                            {{ seat.reserved_by }} ({{ seat.reservation_size }})
+                                        </small> 
+                                        {% else %}
+                                        <small>Capacity: {{ seat.capacity }}</small>
+                                        {% endif %}
+                                    </h4>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                    <div class="c">
+                        {% for seat in seatsC %}
+                            <a {% if not seat.booked and curr.num_attendees < curr.capacity %}
+                                href='{% url "seatbooker:confirm" seat.id %}'{% endif %}>
+                                <div class='label 
+                                    {% if not seat.booked and curr.num_attendees < curr.capacity %} 
+                                        unbooked 
+                                    {% endif %}'>
+                                    <h4 class='seat-id'>{{ seat }} 
+                                        {% if seat.reserved_by %}
+                                        <small class='booked-seat'>
+                                            {{ seat.reserved_by }} ({{ seat.reservation_size }})
+                                        </small> 
+                                        {% else %}
+                                        <small>Capacity: {{ seat.capacity }}</small>
+                                        {% endif %}
+                                    </h4>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                    <div class="d">
+                        {% for seat in seatsD %}
+                            <a {% if not seat.booked and curr.num_attendees < curr.capacity %}
+                                href='{% url "seatbooker:confirm" seat.id %}'{% endif %}>
+                                <div class='label 
+                                    {% if not seat.booked and curr.num_attendees < curr.capacity %} 
+                                        unbooked 
+                                    {% endif %}'>
+                                    <h4 class='seat-id'>{{ seat }} 
+                                        {% if seat.reserved_by %}
+                                        <small class='booked-seat'>
+                                            {{ seat.reserved_by }} ({{ seat.reservation_size }})
+                                        </small> 
+                                        {% else %}
+                                        <small>Capacity: {{ seat.capacity }}</small>
+                                        {% endif %}
+                                    </h4>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            {% else %}
+                <h1>No seats</h1>
+            {% endif %}
+        </main>
+    </div>
+{% endblock %}

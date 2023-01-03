@@ -1,0 +1,38 @@
+{% extends './base.html' %}
+
+{% block title %}Seat Booker | Find my seat{% endblock %}
+{% block content %} 
+    <header>
+        <h1>Seat Booker</h1>
+        <a href='./../' class='admin-login btn'>Home</a>
+    </header>
+
+    <h1>Search for your seat</h1>
+   <h3><a href='{% url "seatbooker:index" %}'>Back to selection</a></h3>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form  %}
+            <div class="field">
+                <h2>{{ field.label_tag }} {{ field }} </h2>
+            </div>
+        {% endfor %}
+        <button class="form-btn" type="submit">Search</button>
+    </form>
+    <div>
+        {% if matches %}
+            <h3>Possible matches: </h3>
+            <ul class="match-list">
+                {% for match in matches %}
+                    <li>
+                        {{ match }} – {{ match.reserved_by }} ({{ match.service }})
+                    </li>
+                {% endfor %}
+            </ul>
+            
+        {% else %}
+            {% if no_matches %}
+                <h3>No matches found!</h3>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

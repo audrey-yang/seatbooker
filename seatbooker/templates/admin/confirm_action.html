@@ -1,0 +1,30 @@
+{% extends 'admin/base_site.html' %}
+
+{% block title %} Create a New Service | Seat Booker {% endblock %}
+
+{% block content %}
+    <form action='' method='post'>
+    {% csrf_token %}
+        <h1>Are you sure you want to proceed?</h1>
+        <p>Creating a new service moves data from the dashboard to a CSV file.</p>
+        <p>The next service is for {{ date }}.</p>
+
+        <h2>Change number of seats per section:</h2>
+        <label>Number of seats for section A: </label>
+            <input type='number' name='secA' value='{{ secA }}' min='1'><br>
+        <label>Number of seats for section B: </label>
+            <input type='number' name='secB' value='{{ secB }}' min='1'><br>
+        <label>Number of seats for section C: </label>
+            <input type='number' name='secC' value='{{ secC }}' min='1'><br>
+        <label>Number of seats for section D: </label>
+            <input type='number' name='secD' value='{{ secD }}' min='1'><br><br>
+        <label>Capacity: </label>
+         <input type='number' name='capacity' value='{{ capacity }}' min='1'><br><br>
+        
+        <input type='hidden' name='action' value='continue'>
+        <input style='background-color: crimson;'
+            type='submit' name='continue' value='Yes, continue'>
+        <input style='background-color: silver;color: black;' 
+            type='submit' name='back' value='No, take me back'>
+    </form>
+{% endblock %}
